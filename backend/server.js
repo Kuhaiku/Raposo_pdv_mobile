@@ -30,8 +30,12 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Rotas da API
+app.use('/api/public', require('./routes/publicRoutes'));
 app.use('/api/auth', require('./routes/auth'));
-// Futuramente, outras rotas como '/api/products', '/api/customers' entrarão aqui
+app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/customers', require('./routes/customerRoutes'));
+app.use('/api/sales', require('./routes/saleRoutes'));
+app.use('/api/periods', require('./routes/periodRoutes'));
 
 // Define a porta do servidor
 const PORT = process.env.PORT || 5000;

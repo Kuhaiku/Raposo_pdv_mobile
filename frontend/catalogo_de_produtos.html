@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Catálogo de Produtos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { primary: "#007BFF", "background-light": "#F8F9FA", "background-dark": "#101922", },
+                    fontFamily: { display: ["Inter", "sans-serif"] },
+                },
+            },
+        };
+    </script>
+    <style> body { min-height: max(884px, 100dvh); } </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="sticky top-0 z-10 bg-background-light dark:bg-background-dark shadow-sm p-4">
+             <div class="flex flex-col items-center flex-1">
+                <h1 id="companyName" class="text-[#212529] dark:text-white text-xl font-bold leading-tight tracking-tight">Catálogo de Produtos</h1>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-4 p-4" id="productList">
+            <p id="loadingMessage" class="text-center text-gray-500">Carregando produtos...</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const productListContainer = document.getElementById('productList');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const companyNameHeader = document.getElementById('companyName');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('user');
+
+            if (!userId) {
+                loadingMessage.style.display = 'none';
+                productListContainer.innerHTML = '<p class="text-center text-red-500 font-bold text-lg">Catálogo inválido ou não encontrado.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/public/catalogo/${userId}`);
+                const result = await response.json();
+
+                loadingMessage.style.display = 'none';
+
+                if (response.ok) {
+                    // CORREÇÃO: Atualiza o título com o nome da empresa
+                    if (result.companyName) {
+                        companyNameHeader.textContent = result.companyName;
+                        document.title = `Catálogo - ${result.companyName}`; // Atualiza o título da aba do navegador
+                    }
+
+                    if (result.data.length === 0) {
+                        productListContainer.innerHTML = '<p class="text-center text-gray-500">Nenhum produto disponível neste catálogo.</p>';
+                        return;
+                    }
+
+                    result.data.forEach(product => {
+                        const imageUrl = product.Images && product.Images.length > 0 ? product.Images[0].url : 'https://via.placeholder.com/150';
+                        
+                        const productCard = `
+                            <div class="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden p-3">
+                                <div class="w-24 h-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg" style='background-image: url("${imageUrl}");'></div>
+                                <div class="flex-1">
+                                    <p class="text-[#212529] dark:text-white text-base font-semibold leading-normal">${product.name}</p>
+                                    <p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal">SKU: ${product.code || 'N/A'}</p>
+                                    <p class="text-[#212529] dark:text-white text-lg font-bold mt-2">R$ ${parseFloat(product.price).toFixed(2).replace('.',',')}</p>
+                                </div>
+                            </div>
+                        `;
+                        productListContainer.insertAdjacentHTML('beforeend', productCard);
+                    });
+                } else {
+                    productListContainer.innerHTML = `<p class="text-center text-red-500">Não foi possível carregar o catálogo.</p>`;
+                }
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                productListContainer.innerHTML = '<p class="text-center text-red-500">Erro de conexão.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

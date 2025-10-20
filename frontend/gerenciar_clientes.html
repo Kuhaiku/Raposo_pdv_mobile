@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Lista de Clientes</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <script src="/js/auth.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#1173d4", "background-light": "#f6f7f8", "background-dark": "#101922", "text-light": "#111418", "text-dark": "#f6f7f8", "subtext-light": "#617589", "subtext-dark": "#a0aec0" }, fontFamily: { "display": ["Inter", "sans-serif"] }, }, }, }
+    </script>
+    <style> .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 } </style>
+    <style> body { min-height: max(884px, 100dvh); } </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-3 justify-between border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+            <a href="/painel_de_vendas.html" class="flex size-12 shrink-0 items-center">
+                <span class="material-symbols-outlined text-text-light dark:text-text-dark text-2xl">arrow_back</span>
+            </a>
+            <h1 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Clientes</h1>
+            <div class="flex w-12 items-center justify-end">
+                <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-text-light dark:text-text-dark gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+            </div>
+        </div>
+        <div id="customerList" class="flex-1 p-4 space-y-4 pb-24">
+            <p id="loadingMessage" class="text-center text-gray-500">Carregando clientes...</p>
+        </div>
+        <div class="fixed bottom-4 right-4">
+            <a href="/cadastro_de_clientes.html" class="flex items-center justify-center rounded-full bg-primary text-white shadow-lg h-14 w-14">
+                <span class="material-symbols-outlined text-3xl">add</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Protege a página
+        protectPage();
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const customerListContainer = document.getElementById('customerList');
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            try {
+                const response = await fetchWithAuth('/api/customers');
+                const result = await response.json();
+
+                loadingMessage.style.display = 'none';
+
+                if (response.ok) {
+                    if (result.data.length === 0) {
+                        customerListContainer.innerHTML = '<p class="text-center text-gray-500">Nenhum cliente cadastrado ainda.</p>';
+                        return;
+                    }
+                    result.data.forEach(customer => {
+                        const customerCard = `
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+                                <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-base font-semibold text-text-light dark:text-text-dark">${customer.name}</h2>
+                                        <p class="text-sm text-subtext-light dark:text-subtext-dark">${customer.phone}</p>
+                                    </div>
+                                    <a class="text-primary hover:text-primary/80" href="#">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </a>
+                                </div>
+                                <div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                                    ${customer.email || 'Nenhum e-mail cadastrado'}
+                                </div>
+                            </div>
+                        `;
+                        customerListContainer.insertAdjacentHTML('beforeend', customerCard);
+                    });
+                } else {
+                    customerListContainer.innerHTML = `<p class="text-center text-red-500">Erro ao carregar clientes: ${result.error}</p>`;
+                }
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                customerListContainer.innerHTML = '<p class="text-center text-red-500">Erro de conexão. Não foi possível carregar os clientes.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Redefinir Senha</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#1173d4", "background-light": "#f5f5f5", "background-dark": "#101922", }, fontFamily: { "display": ["Inter", "sans-serif"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, }, }, }
+    </script>
+    <style> body { min-height: max(884px, 100dvh); } </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex min-h-screen w-full flex-col items-center justify-center p-4">
+        <div id="formContainer" class="w-full max-w-sm space-y-6">
+            <div class="text-center">
+                <span class="material-symbols-outlined text-primary" style="font-size: 48px;">password</span>
+                <h1 class="text-3xl font-bold text-[#111418] dark:text-white mt-4">Crie uma nova senha</h1>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">Sua nova senha deve ser diferente da anterior.</p>
+            </div>
+            <div class="space-y-4">
+                <label class="flex flex-col">
+                    <p class="text-[#111418] dark:text-white text-base font-medium pb-2">Nova Senha</p>
+                    <div class="relative flex items-center">
+                        <input id="password" type="password" class="form-input w-full h-14 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary dark:focus:border-primary pr-12" placeholder="Digite sua nova senha" />
+                        <button type="button" id="togglePassword" class="absolute right-0 flex items-center justify-center h-14 w-12 text-gray-500">
+                            <span class="material-symbols-outlined">visibility_off</span>
+                        </button>
+                    </div>
+                </label>
+                <label class="flex flex-col">
+                    <p class="text-[#111418] dark:text-white text-base font-medium pb-2">Confirmar Nova Senha</p>
+                     <div class="relative flex items-center">
+                        <input id="confirmPassword" type="password" class="form-input w-full h-14 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary dark:focus:border-primary pr-12" placeholder="Confirme sua nova senha" />
+                        <button type="button" id="toggleConfirmPassword" class="absolute right-0 flex items-center justify-center h-14 w-12 text-gray-500">
+                            <span class="material-symbols-outlined">visibility_off</span>
+                        </button>
+                    </div>
+                </label>
+            </div>
+            <button id="resetButton" class="w-full h-12 bg-primary text-white font-bold rounded-lg hover:bg-primary/90">
+                Redefinir Senha
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resetButton = document.getElementById('resetButton');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const togglePasswordButton = document.getElementById('togglePassword');
+            const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
+
+            // --- LÓGICA DO "OLHINHO" ---
+            function setupPasswordToggle(button, input) {
+                const icon = button.querySelector('span');
+                button.addEventListener('click', () => {
+                    const isPassword = input.type === 'password';
+                    input.type = isPassword ? 'text' : 'password';
+                    icon.textContent = isPassword ? 'visibility' : 'visibility_off';
+                });
+            }
+            setupPasswordToggle(togglePasswordButton, passwordInput);
+            setupPasswordToggle(toggleConfirmPasswordButton, confirmPasswordInput);
+
+            // --- LÓGICA DO FORMULÁRIO ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token) {
+                alert('Token de redefinição não encontrado. Por favor, solicite um novo link.');
+                window.location.href = '/recuperacao_de_senha.html';
+                return;
+            }
+
+            resetButton.addEventListener('click', async () => {
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                if (!password || !confirmPassword) {
+                    alert('Por favor, preencha os dois campos de senha.');
+                    return;
+                }
+                if (password !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`/api/auth/resetpassword/${token}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ password })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert('Senha redefinida com sucesso! Você já pode fazer o login.');
+                        window.location.href = '/pagina_de_login.html';
+                    } else {
+                        alert(`Erro: ${result.error || 'Token inválido ou expirado.'}`);
+                        window.location.href = '/recuperacao_de_senha.html';
+                    }
+                } catch (error) {
+                    alert('Ocorreu um erro de conexão.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
