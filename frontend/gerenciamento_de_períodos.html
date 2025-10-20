@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gerenciamento de Períodos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<header class="flex items-center justify-between p-4 pb-2 bg-background-light dark:bg-background-dark">
+<button class="flex items-center justify-center h-12 w-12 text-gray-800 dark:text-gray-200">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="flex-1 text-lg font-bold text-center text-gray-900 dark:text-gray-100 tracking-[-0.015em]">Gerenciamento de Períodos</h1>
+<button class="flex items-center justify-center h-12 w-12 text-gray-800 dark:text-gray-200">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</header>
+<main class="flex-grow p-4">
+<div class="mb-6">
+<button class="flex min-w-[84px] w-full max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] mx-auto peer" id="fechar-periodo-btn">
+<span class="truncate">FECHAR PERÍODO</span>
+</button>
+</div>
+<div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 z-40 items-center justify-center" id="confirm-modal">
+<div class="relative w-full max-w-sm m-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex flex-col gap-6">
+<h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Confirmar Fechamento</h2>
+<p class="text-gray-600 dark:text-gray-400 text-base">Para sua segurança, digite sua senha para confirmar o fechamento do período.</p>
+<div>
+<label class="sr-only" for="password">Senha</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" id="password" placeholder="Digite sua senha" type="password" value=""/>
+</div>
+<div class="flex justify-end gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em]" id="cancel-btn">
+<span class="truncate">Cancelar</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]" id="confirm-btn">
+<span class="truncate">Confirmar</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 z-50 items-center justify-center" id="success-modal">
+<div class="relative w-full max-w-sm m-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex flex-col items-center gap-4">
+<div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900">
+<span class="material-symbols-outlined text-4xl text-green-600 dark:text-green-400">check_circle</span>
+</div>
+<h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Sucesso!</h2>
+<p class="text-gray-600 dark:text-gray-400 text-base text-center">O período foi fechado com êxito.</p>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]" id="ok-btn">
+<span class="truncate">OK</span>
+</button>
+</div>
+</div>
+<section>
+<h2 class="text-gray-900 dark:text-gray-100 text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Histórico de Períodos</h2>
+<div class="flex flex-col gap-3">
+<details class="flex flex-col rounded-lg bg-white dark:bg-gray-800 shadow-sm group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-4 list-none">
+<p class="text-gray-900 dark:text-gray-100 text-sm font-medium leading-normal">Período: 01/10/2023 - 31/10/2023 - Vendas: R$ 150.000,00</p>
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700 p-4">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Comissão Gerada (35%):</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 52.500,00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Ticket Médio:</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 750,00</p>
+</div>
+<div>
+<h4 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Categorias Mais Vendidas:</h4>
+<ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+<li>Eletrônicos: 40%</li>
+<li>Acessórios: 30%</li>
+<li>Software: 20%</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-white dark:bg-gray-800 shadow-sm group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-4 list-none">
+<p class="text-gray-900 dark:text-gray-100 text-sm font-medium leading-normal">Período: 01/09/2023 - 30/09/2023 - Vendas: R$ 135.000,00</p>
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700 p-4">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Comissão Gerada (35%):</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 47.250,00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Ticket Médio:</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 675,00</p>
+</div>
+<div>
+<h4 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Categorias Mais Vendidas:</h4>
+<ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+<li>Acessórios: 35%</li>
+<li>Software: 30%</li>
+<li>Eletrônicos: 25%</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-white dark:bg-gray-800 shadow-sm group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-4 list-none">
+<p class="text-gray-900 dark:text-gray-100 text-sm font-medium leading-normal">Período: 01/08/2023 - 31/08/2023 - Vendas: R$ 142.500,00</p>
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700 p-4">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Comissão Gerada (35%):</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 49.875,00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Ticket Médio:</p>
+<p class="text-gray-900 dark:text-gray-100 text-sm font-bold">R$ 712,50</p>
+</div>
+<div>
+<h4 class="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">Categorias Mais Vendidas:</h4>
+<ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+<li>Software: 45%</li>
+<li>Eletrônicos: 30%</li>
+<li>Acessórios: 15%</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</main>
+</div>
+<script>
+    const fecharPeriodoBtn = document.getElementById('fechar-periodo-btn');
+    const confirmModal = document.getElementById('confirm-modal');
+    const successModal = document.getElementById('success-modal');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
+    const okBtn = document.getElementById('ok-btn');
+    fecharPeriodoBtn.addEventListener('click', () => {
+        confirmModal.classList.remove('hidden');
+        confirmModal.classList.add('flex');
+    });
+    cancelBtn.addEventListener('click', () => {
+        confirmModal.classList.add('hidden');
+        confirmModal.classList.remove('flex');
+    });
+    confirmBtn.addEventListener('click', () => {
+        confirmModal.classList.add('hidden');
+        confirmModal.classList.remove('flex');
+        successModal.classList.remove('hidden');
+        successModal.classList.add('flex');
+    });
+    okBtn.addEventListener('click', () => {
+        successModal.classList.add('hidden');
+        successModal.classList.remove('flex');
+    });
+</script>
+
+</body></html>

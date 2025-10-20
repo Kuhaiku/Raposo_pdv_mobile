@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lista de Clientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "text-light": "#111418",
+                        "text-dark": "#f6f7f8",
+                        "subtext-light": "#617589",
+                        "subtext-dark": "#a0aec0"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex items-center bg-white dark:bg-background-dark p-4 pb-3 justify-between border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark text-2xl">arrow_back</span>
+</div>
+<h1 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Clientes</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-text-light dark:text-text-dark gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</div>
+<div class="flex-1 p-4 space-y-4 pb-24">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Ana Clara Souza</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 5.800,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 15/03/2024
+            </div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Bruno Oliveira</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 12.350,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 02/03/2024
+            </div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Carlos Pereira</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 8.900,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 28/02/2024
+            </div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Daniela Costa</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 4.200,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 10/02/2024
+            </div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Eduarda Ferreira</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 15.100,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 05/02/2024
+            </div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+<div>
+<h2 class="text-base font-semibold text-text-light dark:text-text-dark">Felipe Almeida</h2>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Total de vendas: R$ 7.650,00</p>
+</div>
+<a class="text-primary hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="p-4 text-sm text-subtext-light dark:text-subtext-dark">
+                Última compra: 20/01/2024
+            </div>
+</div>
+</div>
+<div class="fixed bottom-4 right-4">
+<button class="flex items-center justify-center rounded-full bg-primary text-white shadow-lg h-14 w-14">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</div>
+</body></html>

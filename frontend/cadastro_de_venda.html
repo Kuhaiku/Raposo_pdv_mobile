@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nova Venda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007AFF",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .modal {
+      display: none;
+    }
+    .modal.is-open {
+      display: flex;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<button class="text-zinc-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-zinc-900 dark:text-white text-xl font-bold leading-tight tracking-tight flex-1 text-center">Nova Venda</h1>
+<div class="size-10"></div>
+</header>
+<main class="flex-1 px-4 py-6">
+<section>
+<h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-3">Cliente</h2>
+<div class="px-0 py-1">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-zinc-500 dark:text-zinc-400 flex bg-zinc-100 dark:bg-zinc-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-zinc-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-zinc-100 dark:bg-zinc-800 h-full placeholder:text-zinc-500 dark:placeholder:text-zinc-400 px-4 text-base font-normal leading-normal" placeholder="Buscar cliente" value=""/>
+</div>
+</label>
+</div>
+<div class="flex px-0 py-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-primary/10 dark:bg-primary/20 text-primary text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+<span class="truncate">Cadastrar novo cliente</span>
+</button>
+</div>
+</section>
+<div class="h-6"></div>
+<section>
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Produtos</h2>
+<button class="flex items-center gap-2 text-primary font-bold text-base" onclick="document.getElementById('product-modal').classList.add('is-open')">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Adicionar</span>
+</button>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Tênis de corrida vermelho" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKAHarkYfBKIm-xm_lmwPJgDLea_WyvvKgf26TYCiRn1qAwUJR_6sgp8mwLJLud9M4iT6cmcTkw9WUHmXgkzUiurmGtU61vSphh4dnse96QSWSdE0ALIF1Q9EgC8YYQFKDmmm676EzyV0wEQeb62OiAmLIseaXxrM2rxhvw7Ll69umv9l5NmPdna-yU1GOFtlmQuBp5slTPKbDFeEbtkrbN4QSczCFVOLOR2uOnbCTtEiGQ6GKu1vH5bsgDgkrpl5IYkaQM6KA9bov"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Tênis Esportivo</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 250,00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">1</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+<button class="text-red-500 hover:text-red-600 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Relógio de pulso prateado" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVzPluOzOl-xiuhoUwpsiy3nBF1yqPbt6jCLgLi0ffjYZErt1e7m_V4-Q2Oy46_v7TsiJ3FGwnOJed2DdRoeD9dlRig9O4WfyykAFxiRObuNapJ9xiEYOYeBwrMyuW3sZbk0GaZJUlZNh43MaHNTiXxSwZRIJoBNgy0ii3XIFXUz2IEU1Gr1GgyoqY97ViRK-5MWkgLJPAMNXJ0_KmbTTfCLGcRKAaX5Alx6qW0cDv4vBg8sSQkFl9dqjASF8SclO7JPkajp-OFmOQ"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Relógio de Pulso</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 450,00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">1</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+<button class="text-red-500 hover:text-red-600 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</section>
+<div class="h-6"></div>
+<section>
+<h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-3">Método de Pagamento</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white dark:bg-zinc-900 border-2 border-primary ring-2 ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">payments</span>
+<span class="font-semibold text-primary">Dinheiro</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white dark:bg-zinc-900 border-2 border-transparent hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-3xl text-zinc-600 dark:text-zinc-300">photo_camera</span>
+<span class="font-semibold text-zinc-800 dark:text-zinc-100">Pix</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white dark:bg-zinc-900 border-2 border-transparent hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-3xl text-zinc-600 dark:text-zinc-300">event_repeat</span>
+<span class="font-semibold text-zinc-800 dark:text-zinc-100">A Prazo</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white dark:bg-zinc-900 border-2 border-transparent hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-3xl text-zinc-600 dark:text-zinc-300">credit_card</span>
+<span class="font-semibold text-zinc-800 dark:text-zinc-100">Crédito</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white dark:bg-zinc-900 border-2 border-transparent hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-3xl text-zinc-600 dark:text-zinc-300">credit_card</span>
+<span class="font-semibold text-zinc-800 dark:text-zinc-100">Débito</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-zinc-900 p-4 sticky bottom-0 border-t border-zinc-200 dark:border-zinc-800 shadow-lg">
+<div class="flex justify-between items-center mb-4">
+<span class="text-zinc-500 dark:text-zinc-400 text-lg">Subtotal</span>
+<span class="text-zinc-900 dark:text-white text-lg font-semibold">R$ 700,00</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-zinc-500 dark:text-zinc-400 text-lg">Desconto</span>
+<span class="text-green-500 text-lg font-semibold">- R$ 0,00</span>
+</div>
+<div class="border-t border-zinc-200 dark:border-zinc-700 my-3"></div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-zinc-900 dark:text-white text-xl font-bold">Total</span>
+<span class="text-primary text-xl font-bold">R$ 700,00</span>
+</div>
+<button class="w-full h-14 bg-primary text-white text-lg font-bold rounded-xl flex items-center justify-center gap-3 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">check_circle</span>
+                Finalizar Venda
+            </button>
+</footer>
+</div>
+<div class="modal fixed inset-0 z-50 flex-col items-center justify-end bg-black/50" id="product-modal">
+<div class="w-full max-w-lg bg-background-light dark:bg-background-dark rounded-t-2xl p-4 flex flex-col max-h-[90dvh]">
+<header class="flex items-center justify-between pb-4">
+<h2 class="text-zinc-900 dark:text-white text-xl font-bold">Adicionar Produto</h2>
+<button class="text-zinc-900 dark:text-white" onclick="document.getElementById('product-modal').classList.remove('is-open')">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</header>
+<div class="mb-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-zinc-500 dark:text-zinc-400 flex bg-zinc-100 dark:bg-zinc-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-zinc-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-zinc-100 dark:bg-zinc-800 h-full placeholder:text-zinc-500 dark:placeholder:text-zinc-400 px-4 text-base font-normal leading-normal" placeholder="Buscar produto" value=""/>
+</div>
+</label>
+</div>
+<div class="flex-1 overflow-y-auto space-y-3 pr-2">
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Camiseta preta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0egk81yQF0esC7Q0VLoA7ODu8CnVeQZOohVy9ZWtqpG7r6SD1BBrhAKUwC2olb77f56uN4ERoOXTBHlBCN5QTMq7rULpiJvr8G2oaUHZZqYRROlXPehBThojOBdbb7ABvv3-QTwiBJzT9qke6Q3O8dKf_WHlsRiqiGlJmqVeGMBJZbVOP7cGjsGp1slJWVGGmYYFB8OZwlmxXh8y0DPO_0L1knLJxJiJWBEbaXdEAIsV0PgCdGxDbtc1u1mqySR61g1NpP_tB33KE"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Camiseta Básica</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 79,90</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">0</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Calça jeans azul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTJvyHwqQuq7YARgtf8H0cwiC2gnOgsXaUn7300t8Ll2RYim3J250zgeYbf4NwF5TRgBeS69xxxiqsrqTOjhzQTrMxW67vrIbXevuL3hjoatxJ2KOG-elINxhinKKKBYWTMGN-yu41VkEHgE7v74eK9weigNjCQnJ1uSyaeWRKQvZeiZEhcEdrBAsEeAiTNm0UQdEP6PSJ2dY0DviB8BvilCGZm92iONeQzgCMZCh7FUbvx0T-eAgkNodzsHNWIFJp2giT5mKhQ-Me"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Calça Jeans</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 180,00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">0</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4 ring-2 ring-primary">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Fone de ouvido branco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQHzhTsVSqGaBvdpHZkDyKC-msqaZz1D8_xaT1eE3P3-yNOfAKHuM6oR7sq_aOvAlNm_WWjhdA8K6l626iTPOVmI4iZDvZFfTT-4RKqdPLnjnjpCEjE4ZRBLjnFLNXOv_Wu8j0aKrr2dHvP5lSmtYgnSD4BbonNjv4Cvb8aAudhaS9YoZDus_FZmxUsW7rY80XuTWe6V6aEcwNvAO-VIKYAcnBfxEZmErvfi1vbHZ3qMWuWXGAyUKYwEUNOD4Go3aNYCSfpW9XX9Y5"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Fone de Ouvido</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 350,00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">2</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="Mochila preta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-2TS1IdVVK-sSjZ4uuM_3UM8uUzOEbHN0_oM4zLqr1mHGqmj2eknT4Nbwku2yJxQWl1zFXPzWYX1GZQXPUMwCqv17rCg2HG-L75-VF2024gWcbXPO_CHm-xyhIybA7rtOxRDyG2ARK6ZstybIyX9aV9KLfcTwUJogUi-AcW__evt7fYqmozO3ab5KEV_wD_tASnjn_tDUAdZWedcI_PR4ev_OFr7iXV69uoOkbOK1Y5nskPdWpCQaunnwDyIDyXvirP9Mm5iQfLdG"/>
+<div class="flex-1">
+<p class="font-semibold text-zinc-800 dark:text-zinc-100">Mochila Urbana</p>
+<p class="text-sm text-zinc-500 dark:text-zinc-400">R$ 120,00</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">-</button>
+<span class="w-8 text-center font-bold text-zinc-900 dark:text-white">0</span>
+<button class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">+</button>
+</div>
+</div>
+</div>
+<footer class="pt-4 border-t border-zinc-200 dark:border-zinc-800 mt-4">
+<button class="w-full h-14 bg-primary text-white text-lg font-bold rounded-xl flex items-center justify-center gap-3 hover:bg-primary/90 transition-colors" onclick="document.getElementById('product-modal').classList.remove('is-open')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+                Adicionar ao Carrinho
+            </button>
+</footer>
+</div>
+</div>
+
+</body></html>

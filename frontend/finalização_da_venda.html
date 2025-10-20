@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Venda Concluída</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#28A745",
+            "background-light": "#F7F8FC",
+            "background-dark": "#101922",
+            "secondary": "#333333",
+            "highlight": "#007BFF"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex flex-col items-center justify-center p-4 pt-8 text-center">
+<div class="flex items-center justify-center size-16 bg-primary/20 rounded-full mb-4">
+<span class="material-symbols-outlined text-primary text-4xl">check</span>
+</div>
+<h1 class="text-secondary dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Venda Concluída!</h1>
+<p class="text-secondary/70 dark:text-white/70 text-base font-normal leading-normal pt-1">Venda realizada com sucesso!</p>
+</div>
+<div class="flex-grow p-4">
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-md p-6">
+<div class="grid grid-cols-2 gap-x-4 gap-y-5 border-b border-gray-200 dark:border-gray-700 pb-5">
+<div class="flex flex-col gap-1">
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal">Cliente</p>
+<p class="text-secondary dark:text-white text-base font-medium leading-normal">João da Silva</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal">Data</p>
+<p class="text-secondary dark:text-white text-base font-medium leading-normal">12/03/2025</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal">CPF/CNPJ</p>
+<p class="text-secondary dark:text-white text-base font-medium leading-normal">123.456.789-00</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal">Pedido</p>
+<p class="text-secondary dark:text-white text-base font-medium leading-normal">Nº 12345</p>
+</div>
+</div>
+<div class="py-5 space-y-4">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Imagem abstrata do produto A" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuApgh4dNwGABYyzcup4DKUKNQTGxycSeVasrzYZCDLQnymXdKLMb8h3KH6eiYX9OSRi6mAQbAuKb8qOVeCZYK7iVUch4ZPJJF6Ad8CzF-Y48vt4FsRrM1HrCLCqmlMdDQd12_wiKtTZjgwQprAALkB-aHGNCBcaCmX5yuOJH18eYxCqDAyou7y7bZIyfn01TZ0QOTj6Mmj0TAVj_Hq8I4Dtj2SWM0e8Y5Ky6eK25xnvbF4rwPHvDYejjs-8M0mYcR5VvQrTnuZEztg0");'></div>
+<div class="flex-grow">
+<p class="text-secondary dark:text-white text-base font-medium leading-normal line-clamp-1">Produto A</p>
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal line-clamp-2">Qtd: 2, Preço Unitário: R$ 50,00</p>
+</div>
+<div class="shrink-0"><p class="text-secondary dark:text-white text-base font-medium leading-normal">R$ 100,00</p></div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14" data-alt="Imagem abstrata do produto B" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTFWsiZJOBU2XgJXx1kyYYg6lAWpX637SpJwU4GFQPEZscGX2RCPYIlb0dPI5ll5vz3g61NpPzcISejDu30E-2DO2hcUVM_UDJJcm1Y_2Ay_jhjBm6kuyhKO43kGsAkMXxEgo1ameLmQS8k9yEMleI5LvdyqEnuTblykr6OP7A-x-5uf0ri32OLqqTzjQ6SbLiz-5eMdFoqpPWO4FlkAyOtZAYx5KDqDAqfBatk1f-98gV5frKOcWHg3BWZm-oiGA_KdQhlfVilygR");'></div>
+<div class="flex-grow">
+<p class="text-secondary dark:text-white text-base font-medium leading-normal line-clamp-1">Produto B</p>
+<p class="text-secondary/70 dark:text-white/70 text-sm font-normal leading-normal line-clamp-2">Qtd: 1, Preço Unitário: R$ 75,00</p>
+</div>
+<div class="shrink-0"><p class="text-secondary dark:text-white text-base font-medium leading-normal">R$ 75,00</p></div>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-5 space-y-3">
+<div class="flex justify-between items-center text-secondary dark:text-white/90">
+<p class="text-base">Subtotal</p>
+<p class="text-base">R$ 175,00</p>
+</div>
+<div class="flex justify-between items-center text-secondary dark:text-white/90">
+<p class="text-base">Descontos</p>
+<p class="text-base">R$ 0,00</p>
+</div>
+<div class="flex justify-between items-center text-highlight font-bold">
+<p class="text-lg">TOTAL</p>
+<p class="text-lg">R$ 175,00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 pt-0 space-y-3 sticky bottom-0 bg-background-light dark:bg-background-dark">
+<button class="w-full bg-primary text-white font-bold py-4 px-4 rounded-lg flex items-center justify-center gap-2 text-base shadow-lg shadow-primary/30 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">share</span>
+            Compartilhar Recibo
+        </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="w-full bg-gray-200 dark:bg-gray-700 text-secondary dark:text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+<span class="material-symbols-outlined">home</span>
+                Início
+            </button>
+<button class="w-full bg-gray-200 dark:bg-gray-700 text-secondary dark:text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+                Nova Venda
+            </button>
+</div>
+</div>
+</div>
+</body></html>

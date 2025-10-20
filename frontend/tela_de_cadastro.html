@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Criar Conta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .form-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1173d4",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-[#111418] dark:text-white flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Criar Conta</h2>
+<div class="w-12"></div>
+</div>
+<main class="flex-1 px-4 py-6 flex flex-col">
+<h1 class="text-[#111418] dark:text-white tracking-light text-[32px] font-bold leading-tight text-left pb-2">Crie sua conta</h1>
+<p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal pb-8">Preencha os campos abaixo para começar a vender.</p>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal pb-2">Nome Completo</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark focus:border-primary h-14 placeholder:text-[#617589] p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Seu nome completo" value=""/>
+<div class="text-[#617589] dark:text-gray-400 flex border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+<span class="material-symbols-outlined text-2xl">person</span>
+</div>
+</div>
+</label>
+</div>
+<div class="flex flex-col">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal pb-2">E-mail</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark focus:border-primary h-14 placeholder:text-[#617589] p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="seuemail@exemplo.com" type="email" value=""/>
+<div class="text-[#617589] dark:text-gray-400 flex border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+<span class="material-symbols-outlined text-2xl">mail</span>
+</div>
+</div>
+</label>
+<!-- Exemplo de mensagem de erro
+                    <p class="text-red-600 text-sm mt-1">Email inválido.</p>
+                    -->
+</div>
+<div class="flex flex-col">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal pb-2">Senha</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark focus:border-primary h-14 placeholder:text-[#617589] p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Crie uma senha forte" type="password" value=""/>
+<button class="text-[#617589] dark:text-gray-400 flex border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark items-center justify-center px-4 rounded-r-lg border-l-0" type="button">
+<span class="material-symbols-outlined text-2xl">visibility_off</span>
+</button>
+</div>
+</label>
+</div>
+<div class="flex flex-col">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal pb-2">Confirmar Senha</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-background-dark focus:border-primary h-14 placeholder:text-[#617589] p-[15px] text-base font-normal leading-normal" placeholder="Confirme sua senha" type="password" value=""/>
+</div>
+</label>
+<!-- Exemplo de mensagem de erro
+                    <p class="text-red-600 text-sm mt-1">As senhas não coincidem.</p>
+                    -->
+</div>
+</div>
+<div class="mt-auto pt-8">
+<button class="w-full bg-primary text-white font-bold py-4 px-4 rounded-lg hover:bg-primary/90 transition-colors duration-300">
+                    Cadastrar
+                </button>
+<p class="text-center text-[#617589] dark:text-gray-400 mt-6 text-base">
+                    Já possui uma conta?
+                    <a class="font-bold text-primary hover:underline" href="#">Entrar</a>
+</p>
+</div>
+</main>
+</div>
+</body></html>
