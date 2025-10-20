@@ -1,7 +1,5 @@
 const { Sequelize } = require('sequelize');
-const dotenv = require('dotenv');
-
-dotenv.config();
+// A linha dotenv.config() foi removida daqui
 
 module.exports = new Sequelize(
   process.env.DB_NAME,
